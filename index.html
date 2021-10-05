@@ -1,0 +1,33 @@
+<html>
+    <meta charset="UTF-8">
+    <head>
+        <title>Погода в Москве</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script>
+            var settings = {
+            "url": "https://api.openweathermap.org/data/2.5/weather?q=Moscow&units=metric&appid=3bf8b423842e60d21f961a3d863c3ea7",
+            "method": "GET",
+            "timeout": 0,
+            };
+            $.ajax(settings).done(function (response) {
+            console.log(response);
+            $("#temp").append(response.main.temp);
+            $("#mintemp").append(response.main.temp_min);
+            $("#maxtemp").append(response.main.temp_max);
+            $("#pressure").append(response.main.pressure);
+            $("#windspeed").append(response.wind.speed);
+            $("#winddeg").append(response.wind.deg);
+            $("#windgust").append(response.wind.gust);
+            });
+        </script>
+    </head>
+    <body>
+        <p>Main temperature: <span id="temp"></span></p>
+        <p>Min temperature: <span id="maxtemp"></span></p>
+        <p>Max temperature: <span id="mintemp"></span></p>
+        <p>Pressure: <span id="pressure"></span></p>
+        <p>Wind speed: <span id="windspeed"></span></p>
+        <p>Wind deg: <span id="winddeg"></span></p>
+        <p>Wind gust: <span id="windgust"></span></p>
+    </body>
+</html>
